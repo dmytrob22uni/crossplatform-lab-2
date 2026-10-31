@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:list_proj/models/post.dart';
@@ -12,7 +13,8 @@ class AppDb {
   Future<Database> get database async => _db ??= await _open();
 
   Future<Database> _open() async {
-    final path = join(await getDatabasesPath(), 'posts_lab.db');
+    // ./list_proj/.dart_tool/sqflite_common_ffi/databases/list_proj.db
+    final path = join(await getDatabasesPath(), 'list_proj.db');
     return openDatabase(
       path,
       version: 1,
