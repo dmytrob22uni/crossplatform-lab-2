@@ -52,7 +52,7 @@ class _PostsScreenState extends State<PostsScreen> {
       await _db.savePosts(posts);
       _message = null;
     } catch (e) {
-      _message = 'Error occured on fetching API / writing to database.';
+      _message = 'Error occured while interacting with API / database.';
     }
     await _loadFromDb();
     if (!mounted) return; // screen may be closed while performed await(s)
@@ -107,6 +107,7 @@ class _PostsScreenState extends State<PostsScreen> {
                       itemBuilder: (context, index) {
                         final post = visible[index];
                         return PostTile(
+                          key: ValueKey(post.id),
                           post: post,
                           author: _usersById[post.userId],
                           onToggleFavorite: () => _toggleFavorite(post),
