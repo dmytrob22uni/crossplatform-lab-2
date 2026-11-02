@@ -45,7 +45,7 @@ class AppDb {
       batch.insert(
         'users',
         user.toMap(),
-        conflictAlgorithm: ConflictAlgorithm.replace,
+        conflictAlgorithm: ConflictAlgorithm.ignore,
       );
     }
     await batch.commit(noResult: true);
